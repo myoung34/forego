@@ -81,8 +81,6 @@ func (of *OutletFactory) WriteLine(right string, leftC, rightC ct.Color, isError
 	if of.Color {
 		ct.ChangeColor(leftC, true, ct.None, false)
 	}
-	formatter := fmt.Sprintf("", of.Padding)
-	fmt.Printf(formatter)
 
 	if of.Color {
 		if isError {
