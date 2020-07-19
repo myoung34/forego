@@ -55,7 +55,7 @@ func (of *OutletFactory) LineReader(wg *sync.WaitGroup, name string, index int, 
 				break
 			}
 			buffer.Write(buf[0:i])
-			of.WriteLine(name, buffer.String(), color, ct.None, isError)
+			of.WriteLine(buffer.String(), color, ct.None, isError)
 			buffer.Reset()
 			buf = buf[i+1:]
 		}
