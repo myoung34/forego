@@ -65,7 +65,7 @@ func (of *OutletFactory) LineReader(wg *sync.WaitGroup, name string, index int, 
 }
 
 func (of *OutletFactory) SystemOutput(str string) {
-	of.WriteLine("forego", str, ct.White, ct.None, false)
+	of.WriteLine(str, ct.White, ct.None, false)
 }
 
 func (of *OutletFactory) ErrorOutput(str string) {
@@ -74,16 +74,16 @@ func (of *OutletFactory) ErrorOutput(str string) {
 }
 
 // Write out a single coloured line
-func (of *OutletFactory) WriteLine(left, right string, leftC, rightC ct.Color, isError bool) {
+func (of *OutletFactory) WriteLine(right string, leftC, rightC ct.Color, isError bool) {
 	of.Lock()
 	defer of.Unlock()
 
 	if of.Color {
 		ct.ChangeColor(leftC, true, ct.None, false)
 	}
-	formatter := fmt.Sprintf("%%-%ds | ", of.Padding)
-	fmt.Printf(formatter, left)
-	
+	formatter := fmt.Sprintf("", of.Padding)
+	fmt.Printf(formatter)
+
 	if of.Color {
 		if isError {
 			ct.ChangeColor(ct.Red, true, ct.None, true)
